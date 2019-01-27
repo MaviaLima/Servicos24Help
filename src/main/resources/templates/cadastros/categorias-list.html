@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>:: Serviços 24 Help - Cadastro de Categorias ::</title>
+
+</head>
+<body>
+	<div th:insert="header"></div>
+	<div class="container">
+		<h2>Categorias</h2>
+		<h5>Adicionar/Editar uma categoria:</h5>
+		<form class="form-narrow form-horizontal" method="post"
+			th:action="@{/categorias/salvar}" th:object="${categoria}">
+			<input type="hidden" id="id" th:field="*{id}" />
+			<table class="table table-striped">
+				<tr>
+					<td><input type="text" id="nome" placeholder="Nome do Categoria"
+						th:field="*{nome}" size="60" /></td>
+					 
+					<td><button type="submit" class="btn btn-primary">Salvar</button>&nbsp;&nbsp;
+						<a th:href="@{/categorias/list}" class="btn btn-info">Nova categoria</a></td>
+				</tr>
+			</table>
+			<div class="alert alert-success" th:if="${mensagemSucesso}"
+				th:text="${mensagemSucesso}"></div>
+			<div class="alert alert-danger" th:if="${mensagemErro}"
+				th:text="${mensagemErro}"></div>
+		</form>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Editar</th>
+					<th>Remover</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="categoria : ${lista}">
+					<td th:text="${categoria.nome}"></td>
+					<td><a class="btn btn-warning"
+						th:href="@{/categorias/edit/{id}(id=${categoria.id})}">Edit</a></td>
+					<td><a class="btn btn-warning"
+						th:href="@{/categorias/remover/{id}(id=${categoria.id})}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr></hr>
+		<h6>
+			<a th:href="@{/}">Home</a>
+		</h6>
+	</div>
+</body>
+</html>
