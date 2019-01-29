@@ -22,7 +22,7 @@ public class ServicoController {
 			
 	@GetMapping("/")
 	public ModelAndView listarServicos() {
-		ModelAndView mv = new ModelAndView("servico/servico-list");
+		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
 		
 		mv.addObject("lista", service.listarTodos());
 		mv.addObject("listaCategorias", categoriaService.listarTodas());
@@ -40,16 +40,21 @@ public class ServicoController {
 	public String salvarServico(@Valid @ModelAttribute Servico servico, 
 			Errors result) {
 		if(result.hasErrors()) {
-			return "servico/servico-form";
+			return "redirect:/servicos/";
 		}
-		service.salvarServico(servico);
+		try {
+			servico = service.salvarServico(servico);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "redirect:/servicos/";
 	}
 
 	@GetMapping("/editar/{id}")
 	public ModelAndView exibirEdicao(@PathVariable("id") int id) {
 		Servico s = service.buscarPorId(id);
-		ModelAndView mv = new ModelAndView("servico/servico-form");
+		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
 		mv.addObject("servico", s);
 		return mv;
 	}

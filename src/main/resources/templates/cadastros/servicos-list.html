@@ -12,7 +12,7 @@
 		<h2>Serviços</h2>
 		<h5>Adicionar/Editar/Pesquisar:</h5>
 		<form class="form-narrow form-horizontal" method="post"
-			th:action="@{/servicos/saver}" th:object="${servico}">
+			th:action="@{/servicos/salvar}" th:object="${servico}">
 			<input type="hidden" id="id" th:field="*{id}" />
 			<table class="table table-striped">
 				<tr>

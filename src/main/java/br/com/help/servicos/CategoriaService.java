@@ -13,7 +13,6 @@ public class CategoriaService {
 
 	public Categoria salvar(Categoria categoria) throws Exception {
 		if (categoria.getId() == null && repositorio.existsByNome(categoria.getNome())) {
-		//if (repositorio.existsByNome(curso.getNome())) {
 			throw new Exception("Já existe categoria com este nome");
 		}
 		return repositorio.saveAndFlush(categoria);

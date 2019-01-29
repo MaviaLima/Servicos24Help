@@ -15,10 +15,10 @@ import br.com.help.servicos.CategoriaService;
 import br.com.help.servicos.Servico;
 import br.com.help.servicos.ServicoService;
 
-@RestController
-@RequestMapping("/rest/servicos")
+//@RestController
+//@RequestMapping("/rest/servicos")
 public class RestServico {
-
+/*
 	@Autowired
 	private CategoriaService categoriaService;
 	
@@ -58,5 +58,5 @@ public class RestServico {
 	public void remover(@PathVariable("id") int id) {
 		service.excluir(id);
 	}
-	
+	*/
 }

@@ -2,11 +2,13 @@ package br.com.help.servicos;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
@@ -19,7 +21,8 @@ public class Categoria {
 	@NotBlank @Length(min=10, max=60, 
 	      message= "Informar a categoria (até {max} caracteres)")
 	private String nome;
-//	@ManyToOne
+	@OneToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval=true)
+	@JoinColumn(name="servico_id")
 	private List<Servico> servicos;
 	
 	public Categoria() {

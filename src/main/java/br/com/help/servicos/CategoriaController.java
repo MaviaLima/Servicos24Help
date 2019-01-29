@@ -19,12 +19,12 @@ public class CategoriaController {
 
 	@Autowired
 	private CategoriaService categoriaService;
-	@Autowired
-	private ServicoService servicoService;
+	//@Autowired
+	//private ServicoService servicoService;
 	
 	@GetMapping("/")
 	public ModelAndView listarCategorias() {
-		ModelAndView mv = new ModelAndView("categoria/categorias-list");
+		ModelAndView mv = new ModelAndView("cadastros/categorias-list");
 		mv.addObject("lista", categoriaService.listarTodas());
 		return mv;
 	}
@@ -32,7 +32,7 @@ public class CategoriaController {
 
 	@GetMapping("/nova")
 	public String exibirForm(@ModelAttribute Categoria categoria) {
-		return "cadastros/categorias-list";
+		return "categoria/categoria-form";
 	}
 
 		
@@ -51,22 +51,22 @@ public class CategoriaController {
 		return "redirect:/categorias/";
 	}
 	
-	@GetMapping("listaServicos")
-	public ModelAndView pesquisar(Servico servico, Categoria categoria, RedirectAttributes ra) {
-		
-		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
-		if (servico == null || servico.getDescricao() == null) {
-			mv.addObject("listaTodos", servicoService.listarTodos());	
-//		} else {
-//			mv.addObject("lista", categoria.getServicos());
-		}
+//	@GetMapping("listaServicos")
+//	public ModelAndView pesquisar(Servico servico, Categoria categoria, RedirectAttributes ra) {
+//		
+//		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
+//		if (servico == null || servico.getDescricao() == null) {
+//			mv.addObject("listaTodos", servicoService.listarTodos());	
+////		} else {
+////			mv.addObject("lista", categoria.getServicos());
+//		}
 		 
 	    //setando mensagens de erro no template
-        mv.addObject("mensagemErro", ra.getFlashAttributes().get("mensagemErro"));
-        mv.addObject("mensagemSucesso", ra.getFlashAttributes().get("mensagemSucesso"));
+//        mv.addObject("mensagemErro", ra.getFlashAttributes().get("mensagemErro"));
+   //     mv.addObject("mensagemSucesso", ra.getFlashAttributes().get("mensagemSucesso"));
 
-		return mv;
-	}
+	//	return mv;
+//	}
 
 	
 	
