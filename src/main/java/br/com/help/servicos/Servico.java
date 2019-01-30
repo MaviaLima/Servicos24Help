@@ -1,6 +1,8 @@
 package br.com.help.servicos;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,6 +24,7 @@ public class Servico {
 	@NotBlank
 //	@ManyToOne
 //	@JoinColumn(name="servico_id")
+	@Enumerated(EnumType.STRING)
 	private ECategoria categoria;
 
 
