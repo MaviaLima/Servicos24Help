@@ -11,8 +11,8 @@ public class ServicoService {
 	@Autowired
 	private ServicoRepository repositorio;
 
-	@Autowired
-	private CategoriaRepository categoriaRepositorio;
+//	@Autowired
+//	private CategoriaRepository categoriaRepositorio;
 	
 	public Servico salvarServico(Servico entity) throws Exception {
 		if (entity.getId() == null && repositorio.existsByDescricao(entity.getDescricao())) {

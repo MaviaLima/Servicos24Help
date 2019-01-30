@@ -9,8 +9,8 @@
 		charset="UTF-8" />
 <!-- 	<meta name="_csrf" th:content="${_csrf.token}" /> -->
 <!-- 	<meta name="_csrf_header" th:content="${_csrf.headerName}" /> -->
-<!-- 	<meta name="viewport" -->
-<!-- 		content="width=device-width, initial-scale=1, shrink-to-fit=no" /> -->
+   	<meta name="viewport" 
+ 		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -63,7 +63,6 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Cadastro<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a th:href="@{/categorias/}">Categoria</a></li>
               <li><a th:href="@{/servicos/}">Serviço</a></li>
             </ul>
           </li>
@@ -80,8 +79,8 @@
   </nav>
 
 	<!-- /.container -->
-<!-- <div class="alert alert-success" th:if="${mensagemSucesso}" -->
-<!-- 				th:text="${mensagemSucesso}"></div> -->
+       <div class="alert alert-success" th:if="${mensagemSucesso}" 
+ 				th:text="${mensagemSucesso}"></div>
 			<div class="alert alert-danger" th:if="${mensagemErro}"
 				th:text="${mensagemErro}"></div>
         <div class= "alert alert-success" th:if="${globalMessage}"

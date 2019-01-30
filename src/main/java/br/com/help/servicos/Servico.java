@@ -20,9 +20,9 @@ public class Servico {
 	private String descricao;
 
 	@NotBlank
-	@ManyToOne
-	@JoinColumn(name="servico_id")
-	private Categoria categoria;
+//	@ManyToOne
+//	@JoinColumn(name="servico_id")
+	private ECategoria categoria;
 
 
 	public Servico() {
@@ -33,7 +33,7 @@ public class Servico {
 
 	public Servico(Integer id,
 			@NotBlank @Length(min = 10, max = 200, message = "Informar descricao do serviço (até {max} caracteres)") String descricao,
-			@NotBlank Categoria categoria) {
+			@NotBlank ECategoria categoria) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
@@ -62,12 +62,12 @@ public class Servico {
 	}
 
 
-	public Categoria getCategoria() {
+	public ECategoria getCategoria() {
 		return categoria;
 	}
 
 
-	public void setCategoria(Categoria categoria) {
+	public void setCategoria(ECategoria categoria) {
 		this.categoria = categoria;
 	}
 

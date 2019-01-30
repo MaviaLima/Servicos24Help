@@ -17,23 +17,23 @@ import org.springframework.web.servlet.ModelAndView;
 public class ServicoController {
 	@Autowired
 	private ServicoService service;
-	@Autowired
-	private CategoriaService categoriaService;
+//	@Autowired
+//	private CategoriaService categoriaService;
 			
-	//@GetMapping("/")
-	@GetMapping("/list")
+	@GetMapping("/")
+	//@GetMapping("/list")
 	public ModelAndView listarServicos() {
 		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
 		
 		mv.addObject("lista", service.listarTodos());
-		mv.addObject("listaCategorias", categoriaService.listarTodas());
+		mv.addObject("listaCategorias", ECategoria.values());
 //		mv.addObject("listaServicos",service.buscarPorCategoria());
 		return mv;
 	}
 
 	@GetMapping("/novo")
 	public String exibirForm(@ModelAttribute Servico servico) {
-		return "cadastros/servicos-list";
+		return "redirect:/servicos/";
 	}
 
 	@PostMapping("/salvar")
