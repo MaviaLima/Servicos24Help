@@ -15,8 +15,8 @@ public interface ServicoRepository extends JpaRepository<Servico, Integer> {
 	
 	public boolean existsByDescricao(String descricao);
 
-	//@Query("select s from Servico s where s.categoria.id = :idCategoria order by s.descricao")
-	//public List<Servico> findByCategoria(Categoria categoria);
+//	@Query("select s from Servico s where s.categoria.id = :idCategoria order by s.descricao")
+//	public List<Servico> findByCategoria();
 	
 	
 }

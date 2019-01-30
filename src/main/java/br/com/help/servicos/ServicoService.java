@@ -26,8 +26,8 @@ public class ServicoService {
 		return repositorio.findAll();
 	}
 
-//	public List<Servico> buscarPorCategoria(Integer idCategoria) {
-//		return repositorio.findByCategoria(idCategoria);
+//	public List<Servico> buscarPorCategoria() {
+//		return repositorio.findByCategoria();
 //	}
 //	
 	public void excluir(Integer id) {

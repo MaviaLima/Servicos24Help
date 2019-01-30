@@ -30,8 +30,8 @@ public class Categoria {
 	}
 
 	public Categoria(Integer id,
-			@NotBlank @Length(min = 10, max = 60, message = "Informar a categoria (até {max} caracteres)") String nome, 
-					List<Servico> servicos) {
+			@NotBlank @Length(min = 10, max = 60, message = "Informar a categoria (até {max} caracteres)") String nome
+							, List<Servico> servicos) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -54,6 +54,7 @@ public class Categoria {
 		this.nome = nome;
 	}
 
+	
 	public List<Servico> getServicos() {
 		return servicos;
 	}
@@ -61,15 +62,6 @@ public class Categoria {
 	public void setServicos(List<Servico> servicos) {
 		this.servicos = servicos;
 	}
-
-	
-//	public List<Servico> getServicos() {
-//		return servicos;
-//	}
-//
-//	public void setServicos(List<Servico> servicos) {
-//		this.servicos = servicos;
-//	}
 	
 	
 }

@@ -2,14 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="httP://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
+
 <th:block th:fragment="headerBlock">
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		charset="UTF-8" />
 <!-- 	<meta name="_csrf" th:content="${_csrf.token}" /> -->
 <!-- 	<meta name="_csrf_header" th:content="${_csrf.headerName}" /> -->
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!-- 	<meta name="viewport" -->
+<!-- 		content="width=device-width, initial-scale=1, shrink-to-fit=no" /> -->
 
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,8 +20,8 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 	<script 
+ 	 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
 </th:block>
 <title>Serviços 24 Help :: Home</title>
@@ -62,8 +63,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Cadastro<span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a th:href="@{cadastros/categorias-list}">Categoria</a></li>
-              <li><a th:href="@{cadastros/servicos-list}">Serviço</a></li>
+              <li><a th:href="@{/categorias/}">Categoria</a></li>
+              <li><a th:href="@{/servicos/}">Serviço</a></li>
             </ul>
           </li>
         </ul>

@@ -20,20 +20,20 @@ public class ServicoController {
 	@Autowired
 	private CategoriaService categoriaService;
 			
-	@GetMapping("/")
+	//@GetMapping("/")
+	@GetMapping("/list")
 	public ModelAndView listarServicos() {
 		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
 		
 		mv.addObject("lista", service.listarTodos());
 		mv.addObject("listaCategorias", categoriaService.listarTodas());
-
-//		mv.addObject("listaServicos",service.buscarPorCategoria(categoria.nome, categoria.id));
+//		mv.addObject("listaServicos",service.buscarPorCategoria());
 		return mv;
 	}
 
 	@GetMapping("/novo")
 	public String exibirForm(@ModelAttribute Servico servico) {
-		return "servico/servico-form";
+		return "cadastros/servicos-list";
 	}
 
 	@PostMapping("/salvar")

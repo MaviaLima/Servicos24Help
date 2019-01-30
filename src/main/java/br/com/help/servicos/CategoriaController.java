@@ -73,7 +73,7 @@ public class CategoriaController {
 	@GetMapping("/editar/{id}")
 	public ModelAndView exibirEdicao(@PathVariable("id") int id) {
 		Categoria c = categoriaService.buscarPorId(id);
-		ModelAndView mv = new ModelAndView("categoria/categoria-form");
+		ModelAndView mv = new ModelAndView("cadastros/categorias-list");
 		mv.addObject("categoria", c);
 		return mv;
 	}
