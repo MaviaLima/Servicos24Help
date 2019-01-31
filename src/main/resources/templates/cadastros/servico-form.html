@@ -11,7 +11,7 @@
 		<h2>Serviços</h2>
 		<h5>Adicionar/Editar/Pesquisar:</h5>
 		<form class="form-narrow form-horizontal" method="post"
-			th:action="@{/servicos/salvar}" th:object="${servico}">
+			th:action="@{/servicos/saveList}" th:object="${servico}">
 			<input type="hidden" id="id" th:field="*{id}" />
 			<table class="table table-striped">
 				<tr>
@@ -35,7 +35,7 @@
 							value="salvar">Salvar</button>&nbsp;&nbsp;
 						<button type="submit" class="btn btn-info" name="action"
 							value="pesquisar">Pesquisar</button>&nbsp;&nbsp; <a
-						th:href="@{/servicos/}" class="btn btn-info">Novo</a>
+						th:href="@{/servicos/saveList}" class="btn btn-info">Novo</a>
 					</td>
 				</tr>
 			</table>

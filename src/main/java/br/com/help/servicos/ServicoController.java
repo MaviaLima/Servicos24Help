@@ -26,7 +26,7 @@ public class ServicoController {
 			
 	@GetMapping("/list")
 	public ModelAndView pesquisar(Servico servico, RedirectAttributes ra) {
-			ModelAndView mv = new ModelAndView("cadastros/servico-list");
+		ModelAndView mv = new ModelAndView("cadastros/servico-list");
 		
 		mv.addObject("lista", service.listarTodos());
 		mv.addObject("listaCategorias", ECategoria.values());
@@ -44,7 +44,7 @@ public class ServicoController {
 		return "cadastros/servico-form";
 	}
 
-	@RequestMapping(value="saveList", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value="/saveList", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView salvarPesquisarServico(@Valid @ModelAttribute Servico servico, @RequestParam(value="action", 
 		required=false) String action, Errors errors, RedirectAttributes ra) {
 		
@@ -55,6 +55,7 @@ public class ServicoController {
 		}
 	}
 
+	@PostMapping("/salvar")
 private ModelAndView salvar(@Valid @ModelAttribute Servico servico, Errors errors, RedirectAttributes ra) {
 		
 		if (errors.hasErrors()) {
@@ -73,9 +74,14 @@ private ModelAndView salvar(@Valid @ModelAttribute Servico servico, Errors error
 	
 	@GetMapping("/editar/{id}")
 	public ModelAndView exibirEdicao(@PathVariable("id") int id) {
-		Servico s = service.buscarPorId(id);
+		Servico servico = service.buscarPorId(id);
 		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
-		mv.addObject("servico", s);
+		//ModelAndView mv = new ModelAndView("cadastros/servico-list");
+		
+		mv.addObject("lista", service.listarTodos());
+		mv.addObject("listaCategorias", ECategoria.values());
+		mv.addObject("servico", servico);
+
 		return mv;
 	}
 

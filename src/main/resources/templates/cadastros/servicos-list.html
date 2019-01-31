@@ -12,7 +12,7 @@
 		<h2>Serviços</h2>
 		<h5>Adicionar/Editar/Pesquisar:</h5>
 		<form class="form-narrow form-horizontal" method="post"
-			th:action="@{/servicos/salvar}" th:object="${servico}">
+			th:action="@{/servicos/saveList}" th:object="${servico}">
 			<input type="hidden" id="id" th:field="*{id}" />
 			<table class="table table-striped">
 				<tr>
@@ -20,7 +20,7 @@
 					<td>
 					<select class="form-control" id="categoria"
 						th:field="*{categoria}">
-							<option th:each="item : ${listaCategorias}" th:value="${item.id}"
+							<option th:each="item : ${listaCategorias}" th:value="${item}"
 								th:text="${item.text}" selected="selected"></option>
 					</select></td>
 				</tr>
@@ -28,7 +28,7 @@
 					<td>Descrição do Serviço</td>
 					<td><input type="text" id="descricao"
 						placeholder="Descrição do Serviço" th:field="*{descricao}"
-						size="200" /></td>
+						size="100" /></td>
 
 				</tr>
 				<tr>

@@ -14,14 +14,15 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Servico {
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotBlank @Length(min=10, max=200, 
+	@NotBlank @Length(min=1, max=100, 
 			message= "Informar descricao do serviço (até {max} caracteres)")
 	private String descricao;
 
-	@NotBlank
+	//@NotBlank
 //	@ManyToOne
 //	@JoinColumn(name="servico_id")
 	@Enumerated(EnumType.STRING)
@@ -35,7 +36,7 @@ public class Servico {
 
 
 	public Servico(Integer id,
-			@NotBlank @Length(min = 10, max = 200, message = "Informar descricao do serviço (até {max} caracteres)") String descricao,
+			@NotBlank @Length(min = 2, max = 30, message = "Informar descricao do serviço (até {max} caracteres)") String descricao,
 			@NotBlank ECategoria categoria) {
 		super();
 		this.id = id;

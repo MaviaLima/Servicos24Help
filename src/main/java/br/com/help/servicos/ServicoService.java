@@ -14,11 +14,14 @@ public class ServicoService {
 //	@Autowired
 //	private CategoriaRepository categoriaRepositorio;
 	
-	public Servico salvarServico(Servico entity) throws Exception {
-		if (entity.getId() == null && repositorio.existsByDescricao(entity.getDescricao())) {
-			throw new Exception("Já existe servico com esta descrição");
-		}
-		return repositorio.saveAndFlush(entity);
+	public Servico salvarServico(Servico servico) {
+		//if (entity.getId() == null ) {
+			//throw new Exception("Já existe servico com esta descrição");
+		//}
+		//return repositorio.saveAndFlush(entity);
+				return repositorio.saveAndFlush(servico);
+				
+		
 	}
 
 
