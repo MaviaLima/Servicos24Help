@@ -32,13 +32,13 @@
 
 				</tr>
 				<tr>
-					<td colspan="2" align="right">
-						<button type="submit" class="btn btn-primary" name="action"
+				   <td colspan="2" align="right">
+					  <button type="submit" class="btn btn-primary" name="action"
 							value="salvar">Salvar</button>&nbsp;&nbsp;
-						<button type="submit" class="btn btn-info" name="action"
-							value="pesquisar">Pesquisar</button>&nbsp;&nbsp; <a
-						th:href="@{/servicos/savelist}" class="btn btn-info">Novo</a>
-					</td>
+					  <button type="submit" class="btn btn-info" name="action"
+							value="pesquisar">Pesquisar</button>&nbsp;&nbsp; 
+					 <a th:href="@{/servicos/novo}" class="btn btn-info">Novo</a>
+				   </td>
 				</tr>
 			</table>
 			<div class="alert alert-success" th:if="${mensagemSucesso}"
@@ -62,7 +62,7 @@
 					<td th:text="${servico.categoria.text}"></td>
 					<td th:text="${servico.descricao}"></td>
 					<td><a class="btn btn-warning"
-						th:href="@{/servicos/edit/{id}(id=${servico.id})}">Editar</a></td>
+						th:href="@{/servicos/editar/{id}(id=${servico.id})}">Editar</a></td>
 					<td><a class="btn btn-warning"
 						th:href="@{/servicos/remover/{id}(id=${servico.id})}">Remover</a></td>
 				</tr>

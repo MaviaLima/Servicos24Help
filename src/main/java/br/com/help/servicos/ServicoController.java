@@ -21,18 +21,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ServicoController {
 	@Autowired
 	private ServicoService service;
-//	@Autowired
-//	private CategoriaService categoriaService;
 			
-	@GetMapping("/list")
+	@GetMapping("/")
 	public ModelAndView pesquisar(Servico servico, RedirectAttributes ra) {
-		ModelAndView mv = new ModelAndView("cadastros/servico-list");
-		
-		mv.addObject("lista", service.listarTodos());
-		mv.addObject("listaCategorias", ECategoria.values());
+		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
+		if (servico == null || servico.getId() == null) {
+			mv.addObject("lista", service.listarTodos());
+		}else {
+			mv.addObject("listaPorDescricao", service.buscarPorDescricao(servico.getDescricao()));
+		}
+	    mv.addObject("listaCategorias", ECategoria.values());
 		mv.addObject("servico", servico);
-//		mv.addObject("listaServicos",service.buscarPorCategoria());
-		 //setando mensagens de erro no template
+	 //setando mensagens de erro no template
 	    mv.addObject("mensagemErro", ra.getFlashAttributes().get("mensagemErro"));
 	    mv.addObject("mensagemSucesso", ra.getFlashAttributes().get("mensagemSucesso"));
 	    return mv;
@@ -41,7 +41,7 @@ public class ServicoController {
 
 	@GetMapping("/novo")
 	public String exibirForm(@ModelAttribute Servico servico) {
-		return "cadastros/servico-form";
+		return "redirect:/servicos/";
 	}
 
 	@RequestMapping(value="/saveList", method = { RequestMethod.GET, RequestMethod.POST })
@@ -76,7 +76,6 @@ private ModelAndView salvar(@Valid @ModelAttribute Servico servico, Errors error
 	public ModelAndView exibirEdicao(@PathVariable("id") int id) {
 		Servico servico = service.buscarPorId(id);
 		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
-		//ModelAndView mv = new ModelAndView("cadastros/servico-list");
 		
 		mv.addObject("lista", service.listarTodos());
 		mv.addObject("listaCategorias", ECategoria.values());
@@ -89,7 +88,7 @@ private ModelAndView salvar(@Valid @ModelAttribute Servico servico, Errors error
 	public String remover(@PathVariable("id") int id, RedirectAttributes ra) {
 		service.excluir(id);
 		ra.addFlashAttribute("mensagemSucesso", "Serviço removido com sucesso");
-		return "redirect:/servicos/list";		
+		return "redirect:/servicos/";		
 	
 	}
 
