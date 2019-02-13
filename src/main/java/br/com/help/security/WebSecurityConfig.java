@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		String recursos[] = { "/login", "/logout", "/novo-usuario" };
+		String recursos[] = { "/login", "/logout", "/novo-usuario", "/rest/servicos", "/rest/usuarios", "/rest/servico" };
 		// Para acessar qualquer pagina dessa aplicação, o usuário precisa estar
 		// autenticado
 		http.authorizeRequests().antMatchers(recursos).permitAll().anyRequest().authenticated();

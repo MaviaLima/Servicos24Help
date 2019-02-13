@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +16,7 @@ import br.com.help.servicos.Servico;
 import br.com.help.servicos.ServicoService;
 
 @RestController
+
 @RequestMapping("/rest/")
 public class RestServico {
 
@@ -31,5 +34,11 @@ public class RestServico {
 	public List<Usuario> listarUsuarios() {
 		 return usuarioService.listarTodos();	
 	}
+	
+	@PostMapping("/servico") 
+	public Servico newServico(@RequestBody Servico newServico) { 
+	   return service.salvarServico(newServico); 
+	} // Single item 
+
 	
 }
