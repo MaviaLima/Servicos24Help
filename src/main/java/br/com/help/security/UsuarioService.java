@@ -28,17 +28,6 @@ public class UsuarioService {
 		usuarioAtual.setRole(novo.getRole());
 		return repositorio.save(usuarioAtual);
 	}
-
-	public Usuario criarAdmin()  throws Exception {
-		Usuario usuarioAtual = new Usuario();
-		usuarioAtual.setNome("admin");
-		usuarioAtual.setRole(Role.ROLE_ADMIN);
-		usuarioAtual.setEmail("admin@admin");
-		usuarioAtual.setSenha("123");
-		usuarioAtual.setSenhaRepetida("123");
-		usuarioAtual.setAtivo(true);
-		return repositorio.save(usuarioAtual);
-	}
 	
 	public Usuario alterar(Usuario entity) {
 		
@@ -67,7 +56,7 @@ public class UsuarioService {
 	    }
 	    usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 	 
-	    if(usuario.getEmail().equals("mavia@admin")){
+	    if(usuario.getEmail().equals("admin@admin")){
 	    	usuario.setRole(Role.ROLE_ADMIN);
 	    }
 		repositorio.save(usuario);

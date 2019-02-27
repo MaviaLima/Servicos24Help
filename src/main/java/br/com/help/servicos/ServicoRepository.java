@@ -18,7 +18,7 @@ public interface ServicoRepository extends JpaRepository<Servico, Integer> {
 //	public List<Servico> findByCategoria(ECategoria cat);
 
 	@Query("select s from Servico s where s.categoria = :categoria")// order by s.descricao")
-	public List<Servico> findByCategoria(ECategoria categoria);
+	public List<Servico> findByCategoria(Categoria categoria);
 
 	@Query("select s from Servico s where s.descricao like %:descricao% order by s.descricao")
 	public List<Servico> findByDescricao(String descricao);

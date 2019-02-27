@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.help.security.Usuario;
 import br.com.help.security.UsuarioService;
+import br.com.help.servicos.Categoria;
+import br.com.help.servicos.CategoriaService;
 import br.com.help.servicos.Servico;
 import br.com.help.servicos.ServicoService;
 
@@ -25,11 +27,19 @@ public class RestServico {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	@Autowired
+	private CategoriaService categoriaService;
+	
 	@GetMapping("/servicos")
 	public List<Servico> listarServicos() {
 		return  service.listarTodos();
 	}
 	
+	@GetMapping("/categorias")
+	public List<Categoria> listarCategorias() {
+		return  categoriaService.listarTodas();
+	}
+
 	@GetMapping("/usuarios")
 	public List<Usuario> listarUsuarios() {
 		 return usuarioService.listarTodos();	

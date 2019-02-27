@@ -6,6 +6,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
@@ -20,13 +22,16 @@ public class Servico {
 			message= "Informar descricao do serviço (até {max} caracteres)")
 	private String descricao;
 
-	//@NotBlank
-//	@ManyToOne
-//	@JoinColumn(name="servico_id")
-	@Enumerated(EnumType.STRING)
-	private ECategoria categoria;
 
-
+	@ManyToOne
+	@JoinColumn(name="servico_id")
+	private Categoria categoria;
+	
+	/*
+	 * @Enumerated(EnumType.STRING) private ECategoria categoria;
+	 */
+	
+	
 	public Servico() {
 		super();
 	}
@@ -34,8 +39,8 @@ public class Servico {
 
 
 	public Servico(Integer id,
-			@NotBlank @Length(min = 2, max = 30, message = "Informar descricao do serviço (até {max} caracteres)") String descricao,
-			@NotBlank ECategoria categoria) {
+			@NotBlank @Length(min = 2, max = 100, message = "Informar descricao do serviço (até {max} caracteres)") String descricao,
+			@NotBlank Categoria categoria) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
@@ -64,12 +69,12 @@ public class Servico {
 	}
 
 
-	public ECategoria getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
 
-	public void setCategoria(ECategoria categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 

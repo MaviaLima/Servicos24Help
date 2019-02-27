@@ -12,14 +12,21 @@ public class CategoriaService {
 	private CategoriaRepository repositorio;
 
 	public Categoria salvar(Categoria categoria) throws Exception {
+		return repositorio.saveAndFlush(categoria);
+		/*
 		if (categoria.getId() == null && repositorio.existsByNome(categoria.getNome())) {
 			throw new Exception("Já existe categoria com este nome");
 		}
 		return repositorio.saveAndFlush(categoria);
-	}
+*/
+		}
 
 	public Categoria buscarPorId(Integer id) {
 		return repositorio.findById(id).orElse(null);
+	}
+	
+	public List<Categoria> buscarPorNome(String nome) {
+		return repositorio.findByNome(nome);
 	}
 	
 	public List<Categoria> listarTodas() {

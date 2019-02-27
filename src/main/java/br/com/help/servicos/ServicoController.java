@@ -21,7 +21,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ServicoController {
 	@Autowired
 	private ServicoService service;
-			
+	@Autowired
+	private CategoriaService categoriaService;
+	
+	
 	@GetMapping("/")
 	public ModelAndView pesquisar(Servico servico, RedirectAttributes ra) {
 		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
@@ -30,7 +33,8 @@ public class ServicoController {
 		}else {
 			mv.addObject("listaPorDescricao", service.buscarPorDescricao(servico.getDescricao()));
 		}
-	    mv.addObject("listaCategorias", ECategoria.values());
+	   // mv.addObject("listaCategorias", ECategoria.values());
+		 mv.addObject("listaCategorias", categoriaService.listarTodas());
 		mv.addObject("servico", servico);
 	 //setando mensagens de erro no template
 	    mv.addObject("mensagemErro", ra.getFlashAttributes().get("mensagemErro"));
@@ -56,7 +60,7 @@ public class ServicoController {
 	}
 
 	@PostMapping("/salvar")
-private ModelAndView salvar(@Valid @ModelAttribute Servico servico, Errors errors, RedirectAttributes ra) {
+	private ModelAndView salvar(@Valid @ModelAttribute Servico servico, Errors errors, RedirectAttributes ra) {
 		
 		if (errors.hasErrors()) {
 			ra.addFlashAttribute("mensagemErro", "Não foi possível salvar serviço: " + errors.getFieldErrors());
@@ -78,7 +82,7 @@ private ModelAndView salvar(@Valid @ModelAttribute Servico servico, Errors error
 		ModelAndView mv = new ModelAndView("cadastros/servicos-list");
 		
 		mv.addObject("lista", service.listarTodos());
-		mv.addObject("listaCategorias", ECategoria.values());
+		mv.addObject("listaCategorias", categoriaService.listarTodas());
 		mv.addObject("servico", servico);
 
 		return mv;

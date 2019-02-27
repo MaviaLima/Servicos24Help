@@ -18,7 +18,7 @@ public class Categoria {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotBlank @Length(min=10, max=60, 
+	@Length(min=1, max=60, 
 	      message= "Informar a categoria (até {max} caracteres)")
 	private String nome;
 	@OneToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval=true)
@@ -30,7 +30,7 @@ public class Categoria {
 	}
 
 	public Categoria(Integer id,
-			@NotBlank @Length(min = 10, max = 60, message = "Informar a categoria (até {max} caracteres)") String nome
+			@Length(min = 1, max = 60, message = "Informar a categoria (até {max} caracteres)") String nome
 							, List<Servico> servicos) {
 		super();
 		this.id = id;

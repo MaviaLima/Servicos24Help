@@ -19,7 +19,7 @@
 					<td>
 					<select class="form-control" id="categoria" th:field="*{categoria}">
 							<option th:each="item : ${listaCategorias}" th:value="${item}"
-								th:text="${item.text}" selected="selected"></option>
+								th:text="${item.nome}" selected="selected"></option>
 					</select></td>
 				</tr>
 				<tr>

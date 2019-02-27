@@ -43,7 +43,7 @@ public class ServicoService {
 		return repositorio.findById(id).orElse(null);
 	}
 
-	public List<Servico> buscarPorCategoria(ECategoria cat) {
+	public List<Servico> buscarPorCategoria(Categoria cat) {
 		return repositorio.findByCategoria(cat);
 	}
 
