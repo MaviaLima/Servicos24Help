@@ -10,14 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ServicoRepository extends JpaRepository<Servico, Integer> {
 
-	//@Query("select s from Servico s, Categoria c where s.Servico.id = c.idServico = s.id order by s.descricao")
-	//public List<Servico> findByCategoria(Integer idCategoria);
-	
 	public boolean existsByDescricao(String descricao);
 
-//	public List<Servico> findByCategoria(ECategoria cat);
-
-	@Query("select s from Servico s where s.categoria = :categoria")// order by s.descricao")
+	@Query("select s from Servico s where s.categoria = :categoria")
 	public List<Servico> findByCategoria(Categoria categoria);
 
 	@Query("select s from Servico s where s.descricao like %:descricao% order by s.descricao")

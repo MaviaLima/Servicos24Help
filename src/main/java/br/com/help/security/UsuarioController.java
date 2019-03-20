@@ -86,15 +86,4 @@ public class UsuarioController {
 		return "redirect:/usuarios/list";
 	}
 
-	/*
-	 * @GetMapping("/criarAdmin") public void criarAdmin() { ModelAndView mv = new
-	 * ModelAndView("cadastros/usuarios-list"); Usuario usuarioAtual = new
-	 * Usuario(); usuarioAtual.setNome("admin");
-	 * usuarioAtual.setRole(Role.ROLE_ADMIN); usuarioAtual.setEmail("admin@admin");
-	 * usuarioAtual.setSenha("123"); usuarioAtual.setSenhaRepetida("123");
-	 * usuarioAtual.setAtivo(true); mv.addObject("usuario", usuarioAtual);
-	 * 
-	 * }
-	 */
-
 }

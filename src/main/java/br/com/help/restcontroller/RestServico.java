@@ -4,6 +4,8 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,10 +47,51 @@ public class RestServico {
 		 return usuarioService.listarTodos();	
 	}
 	
-	@PostMapping("/servico") 
-	public Servico newServico(@RequestBody Servico newServico) { 
-	   return service.salvarServico(newServico); 
-	} // Single item 
+	@GetMapping("/entityCategorias")
+	public ResponseEntity<List<Categoria>> categorias(){ 
+	    	List<Categoria> categorias = categoriaService.listarTodas();
+		
+		if (categorias != null && !categorias.isEmpty()) {
+			return ResponseEntity.ok(categorias);
+				
+		} else {
+				return ResponseEntity.notFound().build();
+		}
+
+	}
+	
+	@GetMapping("/entityServicos")
+	public ResponseEntity<List<Servico>> servicos(){ 
+    	List<Servico> servicos = service.listarTodos();
+	
+    	if (servicos != null && !servicos.isEmpty()) {
+    		return ResponseEntity.ok(servicos);
+			
+    	} else {
+			return ResponseEntity.notFound().build();
+    	}
+
+	}
 
 	
+	@PostMapping("/servico/novo") 
+	public ResponseEntity<String> novoServico(@RequestBody Servico newServico) { 
+		
+		if (newServico != null) {
+			List<Servico> serv = service.buscarPorDescricao(newServico.getDescricao());
+			if (serv == null) {
+				if (service.salvarServico(newServico)!= null) {
+					return new ResponseEntity<String>(HttpStatus.OK);
+				}
+			}else {
+				return ResponseEntity.badRequest()
+			            .body("Serviço já existente!");
+			}
+		} 
+		
+		return null;
+	
+	}
+	
+
 }

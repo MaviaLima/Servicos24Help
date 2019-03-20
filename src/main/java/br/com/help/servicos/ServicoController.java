@@ -33,8 +33,7 @@ public class ServicoController {
 		}else {
 			mv.addObject("listaPorDescricao", service.buscarPorDescricao(servico.getDescricao()));
 		}
-	   // mv.addObject("listaCategorias", ECategoria.values());
-		 mv.addObject("listaCategorias", categoriaService.listarTodas());
+	    mv.addObject("listaCategorias", categoriaService.listarTodas());
 		mv.addObject("servico", servico);
 	 //setando mensagens de erro no template
 	    mv.addObject("mensagemErro", ra.getFlashAttributes().get("mensagemErro"));

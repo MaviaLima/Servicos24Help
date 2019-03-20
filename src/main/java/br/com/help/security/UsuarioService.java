@@ -56,7 +56,7 @@ public class UsuarioService {
 	    }
 	    usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 	 
-	    if(usuario.getEmail().equals("admin@admin")){
+	    if(usuario.getEmail().equals("mavia@admin")){
 	    	usuario.setRole(Role.ROLE_ADMIN);
 	    }
 		repositorio.save(usuario);

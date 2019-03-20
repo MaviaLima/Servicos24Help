@@ -24,12 +24,8 @@ public class Servico {
 
 
 	@ManyToOne
-	@JoinColumn(name="servico_id")
+	@JoinColumn(name="servico_id")  
 	private Categoria categoria;
-	
-	/*
-	 * @Enumerated(EnumType.STRING) private ECategoria categoria;
-	 */
 	
 	
 	public Servico() {
@@ -39,7 +35,7 @@ public class Servico {
 
 
 	public Servico(Integer id,
-			@NotBlank @Length(min = 2, max = 100, message = "Informar descricao do serviço (até {max} caracteres)") String descricao,
+			@NotBlank @Length(min = 1, max = 100, message = "Informar descricao do serviço (até {max} caracteres)") String descricao,
 			@NotBlank Categoria categoria) {
 		super();
 		this.id = id;
@@ -77,6 +73,5 @@ public class Servico {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-
 
 }

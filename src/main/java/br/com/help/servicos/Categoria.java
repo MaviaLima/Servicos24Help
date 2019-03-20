@@ -21,21 +21,18 @@ public class Categoria {
 	@Length(min=1, max=60, 
 	      message= "Informar a categoria (até {max} caracteres)")
 	private String nome;
-	@OneToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval=true)
-	@JoinColumn(name="servico_id")
-	private List<Servico> servicos;
-	
+
 	public Categoria() {
 		super();
 	}
 
 	public Categoria(Integer id,
-			@Length(min = 1, max = 60, message = "Informar a categoria (até {max} caracteres)") String nome
-							, List<Servico> servicos) {
+			@Length(min = 1, max = 60, message = "Informar a categoria (até {max} caracteres)") String nome ) {
+		
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.servicos = servicos;
+	
 	}
 
 	public Integer getId() {
@@ -54,14 +51,4 @@ public class Categoria {
 		this.nome = nome;
 	}
 
-	
-	public List<Servico> getServicos() {
-		return servicos;
-	}
-
-	public void setServicos(List<Servico> servicos) {
-		this.servicos = servicos;
-	}
-	
-	
 }

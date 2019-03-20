@@ -20,7 +20,7 @@
 					<td>
 					<select class="form-control" id="categoria"
 						th:field="*{categoria}">
-							<option th:each="item : ${listaCategorias}" th:value="${item}"
+							<option th:each="item : ${listaCategorias}" th:value="${item.id}"
 								th:text="${item.nome}" selected="selected"></option>
 					</select></td>
 				</tr>
@@ -60,7 +60,7 @@
 			<tbody>
 				<tr th:each="servico : ${lista}">
 					<!-- <td th:text="${servico.categoria.text}"></td> -->
-					<td th:text="${servico.categoria}"></td>
+					<td th:text="${servico.categoria.nome}"></td>
 					<td th:text="${servico.descricao}"></td>
 					<td><a class="btn btn-warning"
 						th:href="@{/servicos/editar/{id}(id=${servico.id})}">Editar</a></td>
